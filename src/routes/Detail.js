@@ -17,12 +17,12 @@ const GET_MOVIE = gql`
 `;
 
 export default () => {
-  const { id } = useParams();
-  console.log(id);
+  let { id } = useParams();
 
   const { loading, data } = useQuery(GET_MOVIE, {
-    variables: { id },
+    variables: { id: parseInt(id) },
   });
-  console.log(loading, { data });
+  console.log(loading, data);
+
   return "HOME";
 };
