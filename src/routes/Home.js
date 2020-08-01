@@ -34,7 +34,18 @@ const Header = styled.div`
   text-align: center;
   justify-content: center;
   line-height: 1.5;
-  background-color: red;
+  background: #f857a6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff5858,
+    #f857a6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ff5858,
+    #f857a6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   width: 100%;
   height: 43vh;
   h3 {
