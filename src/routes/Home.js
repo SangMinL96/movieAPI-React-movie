@@ -10,6 +10,7 @@ const GET_MOVIES = gql`
       title
       medium_cover_image
       rating
+      isLiked @client
     }
   }
 `;
@@ -69,12 +70,17 @@ function Home() {
           <h3>상민이의 무비스타</h3>
           <div className="content">React,Apollo,GraphQL</div>
         </Header>
-        {loading && <div>Loading....</div>}
+        {loading && <div></div>}
         <Movies>
           {!loading &&
             data.movies &&
             data.movies.map((m) => (
-              <Movie key={m.id} id={m.id} bg={m.medium_cover_image} />
+              <Movie
+                key={m.id}
+                id={m.id}
+                isLiked={m.isLiked}
+                bg={m.medium_cover_image}
+              />
             ))}
         </Movies>
       </Container>

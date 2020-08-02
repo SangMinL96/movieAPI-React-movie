@@ -52,11 +52,13 @@ const MovieImge = styled.div`
 const GET_MOVIE = gql`
   query getMovie($id: Int!) {
     movie(id: $id) {
+      id
       title
       medium_cover_image
       language
       rating
       description_intro
+      isLiked @client
     }
   }
 `;
@@ -71,7 +73,12 @@ export default () => {
   return (
     <Container>
       <MovieContent>
-        <h4 className="title">{loading ? "Loading..." : data.movie.title}</h4>
+        <h4 className="title">
+          {loading
+            ? "Loading..."
+            : `${data.movie.title} 
+          ${data.movie.isLiked ? "💖" : "😢"}`}
+        </h4>
         <div className="languageRating">
           {!loading && data.movie.language} {!loading && data.movie.rating}
         </div>
